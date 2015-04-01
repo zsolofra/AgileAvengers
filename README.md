@@ -35,4 +35,16 @@
 
 # Fee to verify the landlords. Register to be a landlord but need to pay to be a verified landlord to be able to have the ability to change your page.
 
+# Review should only say the address this is what I think about it. Landlords can only fill in other data and add pictures.
+
+# Required comment, address, and rating. 
+
+# Be able to like comments kind of like facebook or have the ability to disagree. 
+
+# Searching by address.
+
+# Similar to rate my professor.
+
+# The users previous comments can be reviewed under their account. 
+
 # 
