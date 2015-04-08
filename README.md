@@ -47,4 +47,49 @@
 
 # The users previous comments can be reviewed under their account. 
 
-# 
+# get properties into the system when they come they will enter an address into the search box if they dont get one back they will be able to add a property. They have to get ratings first and get the properties into the system. 
+
+
+# Meeting with Brian
+
+# Homepage wants a search bar and a login button landlord and renter. 
+
+# Renter will lead to adding properties in and searching for a property. 
+
+# New page after you click search
+
+# Top comments most helpful comment on top
+
+# quick button to rate the property 
+
+# If you rate and your not logged in send you to the login page
+
+# Only one facebook or google+ 
+
+# Facebook login make it as easy as possible to log in dont do both
+
+# Similar to amazon when it comes to rating average stars on top and rating and stars next to each comment. Provide comments on the rating one comment. 
+
+# Required to fill in a text description with the rating. 
+
+# something in there or they will not be able to submit the review. 
+
+# Agree or disagree in a comment and reply to the review. 
+
+# Have to click to see the comments on the review. 
+
+# Bedroom, bath, and rent as there own fields (OPTIONAL not displayed expanding field)
+
+# everything else as a description (OPTIONAL FIELD not displayed expanded)
+
+# Landlord button to claim the property and it will then enter a review that pending properties. separate admin login
+
+# Date and time on the comments.
+
+# Just stars and review in the comment section. assign each comment an id thats hidden
+
+# Landlord be able to submit a claim. (Claim Button) takes them to a form entry should be able to do a public comment. 
+
+# Users not able to edit or delete comments. can edit within 30 minutes.
+
+# Omni off 
