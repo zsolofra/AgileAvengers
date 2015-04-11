@@ -41,4 +41,10 @@ class PropertyTest < ActiveSupport::TestCase
     property.description = ""
     assert property.save
   end
+  
+  test "Can't have duplicate address" do
+    property = Property.new(:address =>"2804 Fail St")
+    property.valid?
+    assert property.errors[:address].include?("has already been taken")
+  end
 end
