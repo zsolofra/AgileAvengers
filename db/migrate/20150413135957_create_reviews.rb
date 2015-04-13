@@ -3,7 +3,7 @@ class CreateReviews < ActiveRecord::Migration
     create_table :reviews do |t|
       t.string :userId
       t.integer :propertyId
-      t.text :review
+      t.text_area :review
       t.integer :likes
       t.integer :dislikes
 
