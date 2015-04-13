@@ -12,7 +12,13 @@ class ReviewsController < ApplicationController
   end
   
   def create
+    @review = Review.new(params[:review])
     
+    if @review.save
+      redirect_to reviews_path, :notice => "Your review has been added."
+    else
+      render "new"
+    end
   end
   
   def edit
