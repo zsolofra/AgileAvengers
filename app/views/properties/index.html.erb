@@ -6,6 +6,9 @@
   <thead>
     <tr>
       <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
       <th>Bedrooms</th>
       <th>Bathrooms</th>
       <th>Rent</th>
@@ -20,6 +23,9 @@
     <% @properties.each do |property| %>
       <tr>
         <td><%= link_to property.address, property %></td>
+        <td><%= property.city  %></td>
+        <td><%= property.state%></td>
+        <td><%= property.zip%></td>
         <td><%= property.bedrooms %></td>
         <td><%= property.bathrooms %></td>
         <td><%= property.rent %></td>
