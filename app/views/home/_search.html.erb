@@ -1,0 +1,7 @@
+
+<p>
+ <%= form_tag properties_url, method: :get do %>
+ <label for="query">Search for Address: </label>
+ <input type="search" id="query" name="q" value="<%= params[:q] %>">
+ <input type="submit" value="Search">
+<% end %></p>
