@@ -14,13 +14,13 @@
 ActiveRecord::Schema.define(version: 20150413135957) do
 
   create_table "reviews", force: :cascade do |t|
-    t.string   "userId"
-    t.integer  "propertyId"
-    t.text     "review"
+    t.integer  "property_id"
     t.integer  "likes"
     t.integer  "dislikes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "user_id"
+    t.text     "review"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
