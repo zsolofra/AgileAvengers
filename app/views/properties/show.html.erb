@@ -1,5 +1,5 @@
 <p id="notice"><%= notice %></p>
-
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 <p>
   <strong>Address:</strong>
   <%= @property.address %>
@@ -34,6 +34,18 @@
   <strong>Description:</strong>
   <%= @property.description %>
 </p>
+
+<p>
+  <strong>Longitude:</strong>
+  <%= @property.longitude %>
+</p>
+
+<p>
+  <strong>Latitude:</strong>
+  <%= @property.latitude %>
+</p>
+
+<img src="http://maps.google.com/maps/api/staticmap?center=<%=@property.latitude%>,<%=@property.longitude%>&zoom=14&size=500x300&sensor=TRUE_OR_FALSE" alt="Map Image for Property" />
 
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>
