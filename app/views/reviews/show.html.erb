@@ -1,0 +1,6 @@
+<% if @review.review do |review|%>
+<h2><%= @review.created_at %></h2>
+<blockqoute><%= @review.review %></blockqoute>
+  <% else%>
+  <h2>No reviews to display</h2>
+<% end %>
