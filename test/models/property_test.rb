@@ -41,6 +41,13 @@ class PropertyTest < ActiveSupport::TestCase
     property.description = ""
     assert property.save
   end
+
+  test "Longitude and Latitude Not Nill" do
+    property = Property.new
+    property.address = "11322 21st Ave Chippewa Falls WI, 54729"
+    assert_not_nil property.longitude
+    assert_not_nil property.latitude
+  end
   
   test "Can't have duplicate address" do
     property = Property.new(:address =>"2804 Fail St")
