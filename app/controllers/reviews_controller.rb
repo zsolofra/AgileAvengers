@@ -99,7 +99,7 @@ class ReviewsController < ApplicationController
     
     property = Property.find(params[:property_id])
     
-    @review = property.reviews.find(params[:id])    
+    @review = property.reviews.find(params[:id])
     @review.destroy
     
     respond_to do |format|
