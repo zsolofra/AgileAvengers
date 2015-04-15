@@ -4,9 +4,13 @@ class PropertiesController < ApplicationController
   # GET /properties
   # GET /properties.json
   def index
-    @properties = Property.all
+    if params[:q]
+        @properties = Property.find_all_by_query(params[:q])
+        else
+        @properties = Property.all
+    end
   end
-
+  
   # GET /properties/1
   # GET /properties/1.json
   def show
@@ -69,6 +73,6 @@ class PropertiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def property_params
-      params.require(:property).permit(:address, :bedrooms, :bathrooms, :rent, :pets, :utilities, :description)
+      params.require(:property).permit(:address, :city, :state, :zip, :bedrooms, :bathrooms, :rent, :pets, :utilities, :description)
     end
 end
