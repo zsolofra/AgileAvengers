@@ -12,7 +12,7 @@ class ReviewsController < ApplicationController
   end
   
   def create
-    @review = Review.new(params[:review])
+    @review = @property.reviews.(review_params)
     
     if @review.save
       redirect_to reviews_path, :notice => "Your review has been added."
