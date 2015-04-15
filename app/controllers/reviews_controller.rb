@@ -1,13 +1,16 @@
 class ReviewsController < ApplicationController
+  before_action :set_property
   before_action :set_review, only: [:show, :edit, :update, :destroy]
 
   # GET /reviews
   # GET /reviews.json
   def index
     
-    property = Property.find(params[:property_id])
+#     property = Property.find(params[:property_id])
     
-    @reviews = property.reviews
+#     @reviews = property.reviews
+    
+    @reviews = @property.reviews.all
     
     respond_to do |format|
       format.html
@@ -32,9 +35,11 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    property = Property.find(params[:property_id])
+#     property = Property.find(params[:property_id])
     
-    @review = property.reviews.build
+#     @review = property.reviews.build
+    
+    @review = @property.reviews.build
     
     respond_to do |format|
       format.html
@@ -52,14 +57,16 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    property = Property.find(params[:property_id])
+#     property = Property.find(params[:property_id])
     
-    @review = property.reviews.create(params[:review])
+#     @review = property.reviews.create(params[:review])
+    
+    @review = @property.reviews.build(review_params)
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to([@review.post, @review], :notice => 'Review was successfully created.') }
-        format.xml { render :xml => @review, :status => :created, :location => [@review.post, @review]}
+        format.html { redirect_to([@review.property, @review], :notice => 'Review was successfully created.') }
+        format.xml { render :xml => @review, :status => :created, :location => [@review.property, @review]}
       else
         format.html { render :action => "new" }
         format.json { render :xml => @review.errors, :status => :unprocessable_entity }
@@ -76,8 +83,8 @@ class ReviewsController < ApplicationController
     @review = property.reviews.find(params[:id])
     
     respond_to do |format|
-      if @review.update_attributes(params[:review])
-        format.html { redirect_to [@review.post, @review], notice: 'Review was successfully updated.' }
+      if @review.update(review_params)
+        format.html { redirect_to [@review.property, @review], notice: 'Review was successfully updated.' }
         format.xml { head :ok }
       else
         format.html { render :action => "edit" }
@@ -104,12 +111,12 @@ class ReviewsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
-      @review = @property.find(params[:id])
+      @review = @property.reviews.find(params[:id])
     end
   
-  def set_property
-    @property = Property.find(params[:property_id])
-  end
+    def set_property
+      @property = Property.find(params[:property_id])
+    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params

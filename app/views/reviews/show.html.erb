@@ -25,5 +25,5 @@
   <%= @review.review %>
 </p>
 
-<%= link_to 'Edit', edit_property_review_path(@review.post, @review) %> |
-<%= link_to 'Back', property_reviews_path(@review.post) %>
+<%= link_to 'Edit', edit_property_review_path(@review.property, @review) %> |
+<%= link_to 'Back', property_reviews_path(@review.property) %>

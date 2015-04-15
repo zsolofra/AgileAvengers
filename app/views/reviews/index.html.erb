@@ -22,9 +22,9 @@
         <td><%= review.dislikes %></td>
         <td><%= review.user_id %></td>
         <td><%= review.review %></td>
-        <td><%= link_to 'Show', [review.post, review] %></td>
-        <td><%= link_to 'Edit', edit_property_review_path(review.post, review) %></td>
-        <td><%= link_to 'Destroy', [review.post, review], :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= link_to 'Show', [review.property, review] %></td>
+        <td><%= link_to 'Edit', edit_property_review_path(review.property, review) %></td>
+        <td><%= link_to 'Destroy', [review.property, review], :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
     <% end %>
   </tbody>
