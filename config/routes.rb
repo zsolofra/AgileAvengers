@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
     
   root to: "home#index"
-  
+
   get 'home/_search'
 
   get 'home/view'
@@ -10,7 +10,10 @@ Rails.application.routes.draw do
 
   get 'home/about'
 
-  resources :properties
+
+  resources :properties do
+    resources :reviews
+  end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

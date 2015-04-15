@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Property:</strong>
+  <%= @review.property_id %>
+</p>
+
+<p>
+  <strong>Likes:</strong>
+  <%= @review.likes %>
+</p>
+
+<p>
+  <strong>Dislikes:</strong>
+  <%= @review.dislikes %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @review.user_id %>
+</p>
+
+<p>
+  <strong>Review:</strong>
+  <%= @review.review %>
+</p>
+
+<%= link_to 'Edit', edit_property_review_path(@review.property, @review) %> |
+<%= link_to 'Back', property_reviews_path(@review.property) %>

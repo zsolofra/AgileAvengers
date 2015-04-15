@@ -8,6 +8,8 @@ class Property < ActiveRecord::Base
     "#{self.address} #{self.city} #{self.state} #{self.zip}"
   end
   
+  has_many :reviews, :dependent => :destroy
+  
   def self.find_all_by_query(query)
     query = query.downcase
     query = "%#{query}%"

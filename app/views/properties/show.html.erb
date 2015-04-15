@@ -61,5 +61,14 @@
 
 <br>
 
+  <strong>Top Review</strong>
+  <% if @property.reviews.any? %>
+    <%= Review.find_by(id: @property.id).review %>
+  <% else %>
+    <p> No Comments. </p>
+  <% end %>
+</p>
+
+<%= link_to 'Reviews', property_reviews_path(@property) %>
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>

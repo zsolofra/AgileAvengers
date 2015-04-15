@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20150415002150) do
+=======
+ActiveRecord::Schema.define(version: 20150415013102) do
+>>>>>>> f0f35f19167c31f3ea875b1ca73f37bdc7e8e387
 
   create_table "properties", force: :cascade do |t|
     t.string   "address"
@@ -28,6 +32,16 @@ ActiveRecord::Schema.define(version: 20150415002150) do
     t.string   "zip"
     t.float    "latitude"
     t.float    "longitude"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer  "property_id"
+    t.integer  "likes"
+    t.integer  "dislikes"
+    t.string   "user_id"
+    t.text     "review"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
 end
