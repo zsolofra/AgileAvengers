@@ -1,17 +1,15 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  reviewId: 
-  userId: MyString
-  propertyId: 1
-  review: MyText
+  property_id: 1
   likes: 1
   dislikes: 1
+  user_id: MyString
+  review: MyText
 
 two:
-  reviewId: 
-  userId: MyString
-  propertyId: 1
-  review: MyText
+  property_id: 1
   likes: 1
   dislikes: 1
+  user_id: MyString
+  review: MyText

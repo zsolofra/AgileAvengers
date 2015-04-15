@@ -6,6 +6,7 @@ class CreateReviews < ActiveRecord::Migration
       t.integer :dislikes
       t.string :user_id
       t.text :review
+
       t.timestamps null: false
     end
   end

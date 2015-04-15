@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :reviews
+
   get 'home/_search'
 
   get 'home/view'
