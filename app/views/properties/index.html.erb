@@ -2,6 +2,7 @@
 
 <h1>Listing Properties</h1>	
 
+<% if !@properties.empty? %>
 <table>
   <thead>
     <tr>
@@ -18,6 +19,7 @@
       <th colspan="3"></th>
     </tr>
   </thead>
+<% end %>
     <% @properties.each do |property| %>
       <tr>
         <td><%= link_to property.address, property %></td>
@@ -38,6 +40,6 @@
 </table>
 
 
-<p> If you did not see your click the new property button below </p>
+<p> Don't see your property? <%= link_to 'Add Property', new_property_path %> </p>
 
-<%= link_to 'New Property', new_property_path %>
+
