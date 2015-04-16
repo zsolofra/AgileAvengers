@@ -3,7 +3,9 @@
 <h1>Listing Reviews for:</h1>
 <h3>
 <%=  @property.address %><br>
-<%=  @property.city + ", " + @property.state + ", " + @property.zip %>
+<%=  @property.city %><%= "," %>
+<%=  @property.state %>
+<%=  @property.zip %>
 </h3>
 
 <table>
