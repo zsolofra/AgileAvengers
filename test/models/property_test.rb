@@ -8,6 +8,9 @@ class PropertyTest < ActiveSupport::TestCase
   test "Creates a valid record" do
     property = Property.new
     property.address = "2804 Boo St"
+    property.city = "Menomonie"
+    property.state = "Wisconsin"
+    property.zip = "54751"
     property.bedrooms = "2"
     property.bathrooms = "1"
     property.rent = "$1000"
@@ -20,6 +23,9 @@ class PropertyTest < ActiveSupport::TestCase
   test "Address should be required" do
     property = Property.new
     property.address = ""
+    property.city = "Menomonie"
+    property.state = "Wisconsin"
+    property.zip = "54751"
     property.bedrooms = "2"
     property.bathrooms = "1"
     property.rent = "$1000"
@@ -30,9 +36,60 @@ class PropertyTest < ActiveSupport::TestCase
     assert property.errors[:address].include?("can't be blank")
   end
   
-  test "Only address is required" do
+  test "City should be required" do
+    property = Property.new
+    property.address = "Address"
+    property.city = ""
+    property.state = "Wisconsin"
+    property.zip = "54751"
+    property.bedrooms = "2"
+    property.bathrooms = "1"
+    property.rent = "$1000"
+    property.pets = "Yes"
+    property.utilities = "Water Included"
+    property.description = "This house is right next the a rover. Awesome views."
+    assert !property.save
+    assert property.errors[:city].include?("can't be blank")
+  end
+  
+  test "State should be required" do
+    property = Property.new
+    property.address = "Address"
+    property.city = "City"
+    property.state = ""
+    property.zip = "54751"
+    property.bedrooms = "2"
+    property.bathrooms = "1"
+    property.rent = "$1000"
+    property.pets = "Yes"
+    property.utilities = "Water Included"
+    property.description = "This house is right next the a rover. Awesome views."
+    assert !property.save
+    assert property.errors[:state].include?("can't be blank")
+  end
+  
+  test "Zip should be required" do
+    property = Property.new
+    property.address = "Address"
+    property.city = "City"
+    property.state = "Wisconsin"
+    property.zip = ""
+    property.bedrooms = "2"
+    property.bathrooms = "1"
+    property.rent = "$1000"
+    property.pets = "Yes"
+    property.utilities = "Water Included"
+    property.description = "This house is right next the a rover. Awesome views."
+    assert !property.save
+    assert property.errors[:zip].include?("can't be blank")
+  end
+  
+  test "Only address, city, state, zip is required" do
     property = Property.new
     property.address = "2804 Boo St"
+    property.city = "Menomonie"
+    property.state = "Wisconsin"
+    property.zip = "54751"
     property.bedrooms = ""
     property.bathrooms = ""
     property.rent = ""
