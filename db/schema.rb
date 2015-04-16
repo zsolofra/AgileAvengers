@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 20150415013102) do
     t.string   "address"
     t.string   "bedrooms"
     t.string   "bathrooms"
-    t.string   "rent"
+    t.integer  "rent"
     t.string   "pets"
     t.string   "utilities"
     t.text     "description"
