@@ -6,22 +6,25 @@
 </p>
 
 <p>
-  <strong>Bedrooms:</strong>
-  <%= @property.bedrooms %>
-</p>
-
-<p>
   <strong>City:</strong>
   <%= @property.city %>
 </p>
+
 <p>
   <strong>State:</strong>
   <%= @property.state %>
 </p>
+
 <p>
   <strong>Zip:</strong>
   <%= @property.zip %>
 </p>
+
+<p>
+  <strong>Bedrooms:</strong>
+  <%= @property.bedrooms %>
+</p>
+
 <p>
   <strong>Bathrooms:</strong>
   <%= @property.bathrooms %>
@@ -46,6 +49,7 @@
   <strong>Description:</strong>
   <%= @property.description %>
 </p>
+
 <img src="http://maps.google.com/maps/api/staticmap?center=<%=@property.latitude%>,<%=@property.longitude%>&markers=icon:http://tinyurl.com/2ftvtt6|<%=@property.latitude%>,<%=@property.longitude%>&zoom=14&size=400x400&sensor=false" alt="Google Map Image" />
 
 <br>
