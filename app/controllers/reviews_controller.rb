@@ -6,10 +6,6 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     
-#     property = Property.find(params[:property_id])
-    
-#     @reviews = property.reviews
-    
     @reviews = @property.reviews.all
     
     respond_to do |format|
@@ -35,9 +31,6 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-#     property = Property.find(params[:property_id])
-    
-#     @review = property.reviews.build
     
     @review = @property.reviews.build
     
@@ -57,9 +50,6 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-#     property = Property.find(params[:property_id])
-    
-#     @review = property.reviews.create(params[:review])
     
     @review = @property.reviews.build(review_params)
 
