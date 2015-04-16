@@ -11,7 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150415013102) do
+ActiveRecord::Schema.define(version: 20150416205103) do
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "review_id"
+    t.integer  "likes"
+    t.integer  "dislike"
+    t.text     "comment"
+    t.string   "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "properties", force: :cascade do |t|
     t.string   "address"
