@@ -1,5 +1,6 @@
 <p id="notice"><%= notice %></p>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
 <p>
   <strong>Address:</strong>
   <%= @property.address %>
@@ -20,35 +21,47 @@
   <%= @property.zip %>
 </p>
 
-<p>
-  <strong>Bedrooms:</strong>
-  <%= @property.bedrooms %>
-</p>
+<% if !@property.bedrooms.empty? %>
+  <p>
+    <strong>Bedrooms:</strong>
+    <%= @property.bedrooms %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Bathrooms:</strong>
-  <%= @property.bathrooms %>
-</p>
+<% if !@property.bathrooms.empty? %>
+  <p>
+    <strong>Bathrooms:</strong>
+    <%= @property.bathrooms %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Rent:</strong>
-  <%= @property.rent %>
-</p>
+<% if !@property.rent.empty? %>
+  <p>
+    <strong>Rent:</strong>
+    <%= @property.rent %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Pets:</strong>
-  <%= @property.pets %>
-</p>
+<% if !@property.pets.empty? %>
+  <p>
+    <strong>Pets:</strong>
+    <%= @property.pets %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Utilities:</strong>
-  <%= @property.utilities %>
-</p>
+<% if !@property.utilities.empty? %>
+  <p>
+    <strong>Utilities:</strong>
+    <%= @property.utilities %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @property.description %>
-</p>
+<% if !@property.description.empty? %>
+  <p>
+    <strong>Description:</strong>
+    <%= @property.description %>
+  </p>
+<% end %>
 
 <img src="http://maps.google.com/maps/api/staticmap?center=<%=@property.latitude%>,<%=@property.longitude%>&markers=icon:http://tinyurl.com/2ftvtt6|<%=@property.latitude%>,<%=@property.longitude%>&zoom=14&size=400x400&sensor=false" alt="Google Map Image" />
 
