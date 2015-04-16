@@ -1,5 +1,5 @@
 class Property < ActiveRecord::Base
-  validates_presence_of :address
+  validates_presence_of :address, :city, :state, :zip
   validates_uniqueness_of :address
   geocoded_by :full_address
   after_validation :geocode
