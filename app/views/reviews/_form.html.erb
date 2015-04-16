@@ -12,11 +12,12 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :property_id %><br>
-    <%= f.number_field :property_id %>
+    <strong>Property:</strong><br>
+    <%= f.label @review.property.address %><br>
+    <%= f.label @review.property.city + ", " + @review.property.state + ", " + @review.property.zip %>
   </div>
   <div class="field">
-    <%= f.label :review %><br>
+    <strong><%= f.label :review %>:</strong><br>
     <%= f.text_area :review %>
   </div>
   <div class="actions">
