@@ -1,51 +1,68 @@
 <p id="notice"><%= notice %></p>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+
 <p>
   <strong>Address:</strong>
   <%= @property.address %>
 </p>
 
 <p>
-  <strong>Bedrooms:</strong>
-  <%= @property.bedrooms %>
-</p>
-
-<p>
   <strong>City:</strong>
   <%= @property.city %>
 </p>
+
 <p>
   <strong>State:</strong>
   <%= @property.state %>
 </p>
+
 <p>
   <strong>Zip:</strong>
   <%= @property.zip %>
 </p>
-<p>
-  <strong>Bathrooms:</strong>
-  <%= @property.bathrooms %>
-</p>
 
-<p>
-  <strong>Rent:</strong>
-  <%= @property.rent %>
-</p>
+<% if !@property.bedrooms.empty? %>
+  <p>
+    <strong>Bedrooms:</strong>
+    <%= @property.bedrooms %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Pets:</strong>
-  <%= @property.pets %>
-</p>
+<% if !@property.bathrooms.empty? %>
+  <p>
+    <strong>Bathrooms:</strong>
+    <%= @property.bathrooms %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Utilities:</strong>
-  <%= @property.utilities %>
-</p>
+<% if !@property.rent.empty? %>
+  <p>
+    <strong>Rent:</strong>
+    <%= @property.rent %>
+  </p>
+<% end %>
 
-<p>
-  <strong>Description:</strong>
-  <%= @property.description %>
-</p>
+<% if !@property.pets.empty? %>
+  <p>
+    <strong>Pets:</strong>
+    <%= @property.pets %>
+  </p>
+<% end %>
+
+<% if !@property.utilities.empty? %>
+  <p>
+    <strong>Utilities:</strong>
+    <%= @property.utilities %>
+  </p>
+<% end %>
+
+<% if !@property.description.empty? %>
+  <p>
+    <strong>Description:</strong>
+    <%= @property.description %>
+  </p>
+<% end %>
+
 <img src="http://maps.google.com/maps/api/staticmap?center=<%=@property.latitude%>,<%=@property.longitude%>&markers=icon:http://tinyurl.com/2ftvtt6|<%=@property.latitude%>,<%=@property.longitude%>&zoom=14&size=400x400&sensor=false" alt="Google Map Image" />
 
 <br>
@@ -56,8 +73,7 @@
   <% else %>
     <p> No Comments. </p>
   <% end %>
-</p>
 
-<%= link_to 'Reviews', property_reviews_path(@property) %>
+<%= link_to 'Reviews', property_reviews_path(@property) %> |
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>
