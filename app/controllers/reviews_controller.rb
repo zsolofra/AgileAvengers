@@ -18,9 +18,7 @@ class ReviewsController < ApplicationController
   # GET /reviews/1.json
   def show
     
-    property = Property.find(params[:property_id])
-    
-    @review = property.reviews.find(params[:id])
+    @review = @property.reviews.find(params[:id])
     
     respond_to do |format|
       format.html
@@ -42,9 +40,9 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
-    property = Property.find(params[:property_id])
     
-    @review = property.reviews.find(params[:id])
+    @review = @property.reviews.find(params[:id])
+    
   end
 
   # POST /reviews
@@ -68,9 +66,7 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1.json
   def update
     
-    property = Property.find(params[:property_id])
-    
-    @review = property.reviews.find(params[:id])
+    @review = @property.reviews.find(params[:id])
     
     respond_to do |format|
       if @review.update(review_params)
@@ -87,9 +83,8 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     
-    property = Property.find(params[:property_id])
-    
     @review = property.reviews.find(params[:id])
+    
     @review.destroy
     
     respond_to do |format|
