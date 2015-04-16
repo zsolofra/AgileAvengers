@@ -19,7 +19,6 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-<% end %>
     <% @properties.each do |property| %>
       <tr>
         <td><%= link_to property.address, property %></td>
@@ -39,7 +38,7 @@
   </tbody>
 </table>
 
-
+<% end %>
 <p> Don't see your property? <%= link_to 'Add Property', new_property_path %> </p>
-
+<%= link_to 'Back', home_index_url %>
 
