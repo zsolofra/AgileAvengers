@@ -4,7 +4,7 @@ class CreateProperties < ActiveRecord::Migration
       t.string :address
       t.string :bedrooms
       t.string :bathrooms
-      t.string :rent
+      t.integer :rent, :default => :null
       t.string :pets
       t.string :utilities
       t.text :description

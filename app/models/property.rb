@@ -1,3 +1,4 @@
+include ActionView::Helpers::NumberHelper
 class Property < ActiveRecord::Base
   validates_presence_of :address, :city, :state, :zip
   validates_uniqueness_of :address
@@ -14,5 +15,13 @@ class Property < ActiveRecord::Base
     query = query.downcase
     query = "%#{query}%"
     Property.where(['lower(address) like ? OR lower(city) like ? OR lower(state) like ?', query, query, query])
+  end
+  
+  def rent=(value)
+    write_attribute(:rent, value.to_s.delete('^0-9.').to_i)
+  end
+  
+  def rent
+    number_to_currency(self[:rent])
   end
 end
