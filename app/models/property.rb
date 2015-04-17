@@ -18,10 +18,22 @@ class Property < ActiveRecord::Base
   end
   
   def rent=(value)
-    write_attribute(:rent, value.to_s.delete('^0-9.').to_i)
+    if value.to_s.delete('^0-9.').to_i != 0
+      write_attribute(:rent, value.to_s.delete('^0-9.').to_i)
+    else
+      write_attribute(:rent, nil)
+    end
   end
   
   def rent
     number_to_currency(self[:rent])
+  end
+  
+  def utilities
+    if self[:utilities].match(/^(\d)+$/)
+      return number_to_currency(self[:utilities])
+    else
+      return self[:utilities]
+    end
   end
 end
