@@ -1,6 +1,5 @@
-Rails.application.routes.draw do
-    
-  devise_for :users
+Rails.application.routes.draw do 
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   root to: "home#index"
 
   get 'home/_search'
