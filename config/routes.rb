@@ -3,13 +3,9 @@ Rails.application.routes.draw do
   root to: "home#index"
 
   get 'home/_search'
-
   get 'home/view'
-
   get 'home/index'
-
   get 'home/about'
-
 
   resources :properties do
     resources :reviews
