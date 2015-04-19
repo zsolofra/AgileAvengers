@@ -9,6 +9,11 @@ class PropertiesController < ApplicationController
         else
         @properties = Property.all
     end
+    
+    #GET /properties/filter
+    @q = Property.search(params[:q])
+    @properties = @q.result(:district => true)
+    
   end
   
   # GET /properties/1

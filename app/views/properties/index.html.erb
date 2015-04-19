@@ -3,6 +3,39 @@
 <h1>Listing Properties</h1>	
 
 <% if !@properties.empty? %>
+
+<h3>Filter Search Results</h3>
+
+<%= search_form_for @q do |f| %>
+  <%= f.label :address %>
+  <%= f.text_field :address %>
+  <br>
+  <%= f.label :city %>
+  <%= f.text_field :city %>
+  <br>
+  <%= f.label :state %>
+  <%= f.text_field :state %>
+  <br>
+  <%= f.label :zip %>
+  <%= f.text_field :zip %>
+  <br>
+  <%= f.label :bedrooms %>
+  <%= f.text_field :bedrooms %>
+  <br>
+  <%= f.label :bathrooms %>
+  <%= f.text_field :bathrooms %>
+  <br>
+  <%= f.label :rent %>
+  <%= f.text_field :rent %>
+  <br>
+  <%= f.label :pets %>
+  <%= f.text_field :pets %>
+  <br>
+  <%= f.label :utilities %>
+  <%= f.text_field :utilities %>
+  <%= f.submit %>
+<% end %>
+
 <table>
   <thead>
     <tr>
