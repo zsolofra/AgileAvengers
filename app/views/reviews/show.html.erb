@@ -26,6 +26,7 @@
 </p>
 
 <%= link_to 'Like', like_property_review_path(@review.property, @review), method: :put %>
+<%= link_to 'Dislike', dislike_property_review_path(@review.property, @review), method: :put %>
 <%= @review.get_up_votes.size %>
 
 <br><br>
