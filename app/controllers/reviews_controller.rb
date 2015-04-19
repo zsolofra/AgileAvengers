@@ -119,10 +119,6 @@ class ReviewsController < ApplicationController
     @review.downvote_by current_user
     redirect_to :back
   end
-  
-  def score
-    self.get_upvotes.size - self.get_downvotes.size
-  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
