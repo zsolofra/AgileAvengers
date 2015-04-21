@@ -12,11 +12,9 @@ Rails.application.routes.draw do
 
 
   resources :properties do
-    resources :reviews
-  end
-  
-  resources :reviews do
-    resources :comments
+    resources :reviews do
+      resources :comments
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.
