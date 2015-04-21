@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20150416205103) do
   create_table "comments", force: :cascade do |t|
     t.integer  "review_id"
     t.integer  "likes"
-    t.integer  "dislike"
+    t.integer  "dislikes"
     t.text     "comment"
     t.string   "user_id"
     t.datetime "created_at", null: false
