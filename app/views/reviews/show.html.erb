@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Property:</strong>
-  <%= @review.property_id %>
-</p>
-
-<p>
   <strong>Review:</strong>
   <%= @review.review %>
 </p>
@@ -17,7 +12,6 @@
   <%= button_to 'Dislike', dislike_property_review_path(@review.property, @review), method: :put %>
 </div>  
 <%= @review.score %>
-
 
 <br><br>
 
