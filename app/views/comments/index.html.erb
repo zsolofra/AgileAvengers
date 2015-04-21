@@ -13,7 +13,6 @@
     <tr>
       <th>Comment Date</th>
       <th>Likes</th>
-      <th>Dislikes</th>
       <th>Comment</th>
       <th colspan="3"></th>
     </tr>
@@ -22,9 +21,9 @@
     <% @comment.each do |comment| %>
   <tr>
     <td><%= comment.created_at.strftime("%B %d, %Y") %></td>
-    <td><%= comment.likes %></td>
-    <td><%= comment.dislikes %></td>
+    <td><%= comment.score %></td>
     <td><%= comment.comment %></td>
+    <td><%= link_to truncate(comment.comment, :length => 15), [@property, @review, comment] %></td>  
     <td><%= link_to 'edit', edit_property_review_comment_path(@property, @review, comment.id) %></td>
     <% end %>
   </tr>
