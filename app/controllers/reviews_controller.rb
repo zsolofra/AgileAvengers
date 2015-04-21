@@ -8,10 +8,7 @@ class ReviewsController < ApplicationController
     
     @reviews = @property.reviews.all
     
-    respond_to do |format|
-      format.html
-      format.xml {render :xml => @reviews}
-    end
+    
   end
 
   # GET /reviews/1
