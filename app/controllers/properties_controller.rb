@@ -6,15 +6,16 @@ class PropertiesController < ApplicationController
   def index
     if params[:q]
         @properties = Property.find_all_by_query(params[:q])
+        end
+        else 
+        @q = Property.search(params[:q])
+        @properties = @q.result
+        end
         else
         @properties = Property.all
-    end
-    
-    #GET /properties/filter
-    @q = Property.search(params[:q])
-    @properties = @q.result(:district => true)
-    
-  end
+   end
+     
+  #end
   
   # GET /properties/1
   # GET /properties/1.json
@@ -28,6 +29,7 @@ class PropertiesController < ApplicationController
 
   # GET /properties/1/edit
   def edit
+    @property = Property.find(params[:id])
   end
 
   # POST /properties
@@ -80,4 +82,4 @@ class PropertiesController < ApplicationController
     def property_params
       params.require(:property).permit(:address, :city, :state, :zip, :bedrooms, :bathrooms, :rent, :pets, :utilities, :description)
     end
-end
+#end
