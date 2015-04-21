@@ -24,7 +24,7 @@
     <td><%= comment.score %></td>
     <td><%= comment.comment %></td>
     <td><%= link_to truncate(comment.comment, :length => 15), [@property, @review, comment] %></td>  
-    <td><%= link_to 'edit', edit_property_review_comment_path(@property, @review, comment.id) %></td>
+    <td><%= link_to 'Edit', edit_property_review_comment_path(@property, @review, comment.id) %></td>
     <% end %>
   </tr>
   <% else %>
