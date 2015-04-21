@@ -7,12 +7,14 @@
 <%=  @property.state %>
 <%=  @property.zip %>
 </h3>
+<h1>Reviews for: <%= @property.address %></h1>
 
 <table>
   <thead>
     <tr>
       <th>Review</th>
       <th>Likes</th>
+      <th>Review Date</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,12 +22,15 @@
   <tbody>
     <% @reviews.each do |review| %>
       <tr>
-        <td><%= link_to review.review, [review.property, review] %></td>
+        <td><%= link_to review.review, [review.property, review] %></td>  
+        <td><%= review.created_at.strftime("%B %d, %Y") %></td>      
         <td><%= review.score %></td>
+        <td><%= link_to 'Comments', property_review_comments_path(@property, review, @comment) %></td> 
         <td><%= link_to 'Edit', edit_property_review_path(review.property, review) %></td>
         <td><%= link_to 'Destroy', [review.property, review], :confirm => 'Are you sure?', :method => :delete %></td>
       </tr>
     <% end %>
+    
   </tbody>
 </table>
 
@@ -33,3 +38,4 @@
 
 <%= link_to 'New Review', new_property_review_path %>
 <%= link_to 'Home', home_index_url %>
+<%= link_to 'Back', property_path(@property.id) %>

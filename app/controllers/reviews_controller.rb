@@ -6,25 +6,16 @@ class ReviewsController < ApplicationController
   # GET /reviews.json
   def index
     
-#     property = Property.find(params[:property_id])
-    
-#     @reviews = property.reviews
-    
     @reviews = @property.reviews.all
     
-    respond_to do |format|
-      format.html
-      format.xml {render :xml => @reviews}
-    end
+    
   end
 
   # GET /reviews/1
   # GET /reviews/1.json
   def show
     
-    property = Property.find(params[:property_id])
-    
-    @review = property.reviews.find(params[:id])
+    @review = @property.reviews.find(params[:id])
     
     respond_to do |format|
       format.html
@@ -35,9 +26,6 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-#     property = Property.find(params[:property_id])
-    
-#     @review = property.reviews.build
     
     @review = @property.reviews.build
     
@@ -49,17 +37,14 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/1/edit
   def edit
-    property = Property.find(params[:property_id])
     
-    @review = property.reviews.find(params[:id])
+    @review = @property.reviews.find(params[:id])
+    
   end
 
   # POST /reviews
   # POST /reviews.json
   def create
-#     property = Property.find(params[:property_id])
-    
-#     @review = property.reviews.create(params[:review])
     
     @review = @property.reviews.build(review_params)
 
@@ -78,9 +63,7 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1.json
   def update
     
-    property = Property.find(params[:property_id])
-    
-    @review = property.reviews.find(params[:id])
+    @review = @property.reviews.find(params[:id])
     
     respond_to do |format|
       if @review.update(review_params)
@@ -97,9 +80,8 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     
-    property = Property.find(params[:property_id])
-    
     @review = property.reviews.find(params[:id])
+    
     @review.destroy
     
     respond_to do |format|

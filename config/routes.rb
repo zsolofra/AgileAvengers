@@ -11,7 +11,12 @@ Rails.application.routes.draw do
     resources :reviews do
       member do
         put "like", to: "reviews#upvote"
-        put "dislike", to: "reviews#downvote"
+        put "dislike", to: "reviews#downvote"        
+      end
+      resources :comments do
+        member do
+        put "like", to: "reviews#upvote"
+        put "dislike", to: "reviews#downvote"        
       end
     end
   end
