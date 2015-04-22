@@ -39,11 +39,4 @@ class PropertiesControllerTest < ActionController::TestCase
     assert_redirected_to property_path(assigns(:property))
   end
 
-  test "should destroy property" do
-    assert_difference('Property.count', -1) do
-      delete :destroy, id: @property
-    end
-
-    assert_redirected_to properties_path
-  end
 end
