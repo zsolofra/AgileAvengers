@@ -1,29 +1,19 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Property:</strong>
-  <%= @review.property_id %>
-</p>
-
-<p>
-  <strong>Likes:</strong>
-  <%= @review.likes %>
-</p>
-
-<p>
-  <strong>Dislikes:</strong>
-  <%= @review.dislikes %>
-</p>
-
-<p>
-  <strong>User:</strong>
-  <%= @review.user_id %>
-</p>
-
-<p>
   <strong>Review:</strong>
   <%= @review.review %>
 </p>
+
+<div style="float:left;">
+  <%= button_to 'Like', like_property_review_path(@review.property, @review), method: :put %>
+</div>
+<div style="float:left;">
+  <%= button_to 'Dislike', dislike_property_review_path(@review.property, @review), method: :put %>
+</div>  
+<%= @review.score %>
+
+<br><br>
 
 <%= link_to 'Edit', edit_property_review_path(@review.property, @review) %> |
 <%= link_to 'Back', property_reviews_path(@review.property) %>

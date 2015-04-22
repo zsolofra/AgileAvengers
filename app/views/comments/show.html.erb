@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @comment.comment %>
+</p>
+
+<div style="float:left;">
+  <%= button_to 'Like', like_property_review_comment_path(@comment.review.property, @comment.review, @comment), method: :put %>
+</div>
+<div style="float:left;">
+  <%= button_to 'Dislike', dislike_property_review_comment_path(@comment.review.property, @comment.review, @comment), method: :put %>
+</div>  
+<%= @comment.score %>
+
+<p><%= link_to 'Comments', property_review_comments_path(@property, @review, @comment) %></p>

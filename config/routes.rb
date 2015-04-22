@@ -8,7 +8,18 @@ Rails.application.routes.draw do
   get 'home/about'
 
   resources :properties do
-    resources :reviews
+    resources :reviews do
+      member do
+        put "like", to: "reviews#upvote"
+        put "dislike", to: "reviews#downvote"        
+      end
+      resources :comments do
+        member do
+          put "like", to: "comments#upvote"
+          put "dislike", to: "comments#downvote"
+        end
+      end
+    end
   end
 
   # The priority is based upon order of creation: first created -> highest priority.

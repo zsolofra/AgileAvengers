@@ -71,9 +71,9 @@
   <% if @property.reviews.any? %>
     <%= Review.find_by(property_id: @property.id).review %>
   <% else %>
-    <p> No Comments. </p>
+    <p> No Reviews to display. <%= link_to 'Add a review.', new_property_review_path(@property) %></p>
   <% end %>
-
+<br>
 <%= link_to 'Reviews', property_reviews_path(@property) %> |
 <%= link_to 'Edit', edit_property_path(@property) %> |
 <%= link_to 'Back', properties_path %>
