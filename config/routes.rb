@@ -1,15 +1,11 @@
-Rails.application.routes.draw do
-    
+Rails.application.routes.draw do 
+  devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
   root to: "home#index"
 
   get 'home/_search'
-
   get 'home/view'
-
   get 'home/index'
-
   get 'home/about'
-
 
   resources :properties do
     resources :reviews
