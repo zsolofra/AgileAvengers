@@ -1,6 +1,7 @@
 class Review < ActiveRecord::Base
   acts_as_votable
   belongs_to :property
+  belongs_to :user
   has_many :comments, :dependent => :destroy
   
   def score
