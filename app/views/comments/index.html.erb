@@ -19,11 +19,13 @@
   </thead>
   <tbody>
     <% @comment.each do |comment| %>
-  <tr>
-    <td><%= link_to truncate(comment.comment, :length => 15), [@property, @review, comment] %></td>  
-    <td><%= comment.score %></td>
-    <td><%= comment.created_at.strftime("%B %d, %Y") %></td>
-    <td><%= link_to 'Edit', edit_property_review_comment_path(@property, @review, comment.id) %></td>
+    <tr>
+      <td><%= link_to truncate(comment.comment, :length => 15), [@property, @review, comment] %></td>  
+      <td><%= comment.score %></td>
+      <td><%= comment.created_at.strftime("%B %d, %Y") %></td>
+      <% if current_user %>
+        <td><%= link_to 'Edit', edit_property_review_comment_path(@property, @review, comment.id) %></td>
+      <% end%>
     <% end %>
   </tr>
   <% else %>
