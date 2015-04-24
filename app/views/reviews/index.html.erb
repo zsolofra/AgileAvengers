@@ -25,8 +25,10 @@
         <td><%= review.score %></td>
         <td><%= link_to 'Comments', property_review_comments_path(@property, review, @comment) %></td>
         <% if current_user %>
-          <td><%= link_to 'Edit', edit_property_review_path(review.property, review) %></td>
-          <td><%= link_to 'Destroy', [review.property, review], :confirm => 'Are you sure?', :method => :delete %></td>
+          <% if !review.has_time_passed? %>
+            <td><%= link_to 'Edit', edit_property_review_path(review.property, review) %></td>
+            <td><%= link_to 'Destroy', [review.property, review], :confirm => 'Are you sure?', :method => :delete %></td>
+          <% end %>
         <% end %>
       </tr>
     <% end %>
