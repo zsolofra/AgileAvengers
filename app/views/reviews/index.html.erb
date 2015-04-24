@@ -23,9 +23,11 @@
         <td><%= link_to truncate(review.review, :length => 15), [review.property, review] %></td>  
         <td><%= review.created_at.strftime("%B %d, %Y") %></td>      
         <td><%= review.score %></td>
-        <td><%= link_to 'Comments', property_review_comments_path(@property, review, @comment) %></td> 
-        <td><%= link_to 'Edit', edit_property_review_path(review.property, review) %></td>
-        <td><%= link_to 'Destroy', [review.property, review], :confirm => 'Are you sure?', :method => :delete %></td>
+        <td><%= link_to 'Comments', property_review_comments_path(@property, review, @comment) %></td>
+        <% if current_user %>
+          <td><%= link_to 'Edit', edit_property_review_path(review.property, review) %></td>
+          <td><%= link_to 'Destroy', [review.property, review], :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
       </tr>
     <% end %>
     
