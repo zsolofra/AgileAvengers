@@ -15,5 +15,7 @@
 
 <br><br>
 
-<%= link_to 'Edit', edit_property_review_path(@review.property, @review) %> |
+<% if current_user %>
+  <%= link_to 'Edit', edit_property_review_path(@review.property, @review) %> |
+<% end %>
 <%= link_to 'Back', property_reviews_path(@review.property) %>
