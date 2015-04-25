@@ -39,6 +39,44 @@
 </table>
 <% end %>
 
+
+<p>
+ <%= form_tag properties_url, method: :get do %>
+ <label for="zip">Filter by City or Zip: </label>
+ <input type="search" id="zip" name="q" value="<%= params[:q] %>">
+ <input type="submit" value="Search">
+<% end %></p>
+<p>
+ <%= form_tag properties_url, method: :get do %>
+ <label for="bedrooms">Filter by Bedrooms: </label>
+ <input type="bedrooms" id="bedrooms" name="b" value="<%= params[:b] %>">
+ <input type="submit" value="Search">
+<% end %></p>
+<p>
+ <%= form_tag properties_url, method: :get do %>
+ <label for="bathrooms">Filter by Bathrooms: </label>
+ <input type="bathrooms" id="bathrooms" name="ba" value="<%= params[:ba] %>">
+ <input type="submit" value="Search">
+<% end %></p>
+<p>
+ <%= form_tag properties_url, method: :get do %>
+ <label for="rent">Filter by Cost of Rent: </label>
+ <input type="rent" id="rent" name="r" value="<%= params[:r] %>">
+ <input type="submit" value="Search">
+<% end %></p>
+<p>
+ <%= form_tag properties_url, method: :get do %>
+ <label for="pets">Filter by Pets: </label>
+ <input type="pets" id="pets" name="p" value="<%= params[:p] %>">
+ <input type="submit" value="Search">
+<% end %></p>
+<p>
+ <%= form_tag properties_url, method: :get do %>
+ <label for="utilities">Filter by Utility Costs: </label>
+ <input type="utilities" id="utilites" name="u" value="<%= params[:u] %>">
+ <input type="submit" value="Search">
+<% end %></p>
+
 <p> Don't see your property? &nbsp;<%= link_to 'Add Property', new_property_path %> &nbsp; 
 <%= link_to 'New Search', home_index_path %>
 </p>
