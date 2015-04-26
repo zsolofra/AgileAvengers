@@ -17,6 +17,14 @@
     <%= f.label @review.property.city + ", " + @review.property.state + ", " + @review.property.zip %>
   </div>
   <div class="field">
+      <div class="small-2 large-4 columns">
+        <br>
+        <% if current_user %>
+        Overall Rating: <%= rating_for @property, "overall_rating"%>
+        <% end %>
+      </div>
+    </div>
+  <div class="field">
     <strong><%= f.label :review %>:</strong><br>
     <%= f.text_area :review %>
   </div>
