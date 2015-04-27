@@ -37,4 +37,8 @@ class Property < ActiveRecord::Base
       return self[:utilities]
     end
   end
+  
+  def average_rating
+    ratings.sum(:score) / ratings.size
+  end
 end
