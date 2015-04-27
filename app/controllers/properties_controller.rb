@@ -6,23 +6,25 @@ class PropertiesController < ApplicationController
   def index
     if params[:q]
         @properties = Property.find_all_by_query(params[:q])
-
-    elsif params[:b]
-        @properties = Property.find_all_by_query(params[:b])
         
-    elsif params[:ba]
-        @properties = Property.find_all_by_query(params[:ba])
-        
-    elsif params[:r]
-        @properties = Property.find_all_by_query(params[:r])
-        
-    elsif params[:p]
-        @properties = Property.find_all_by_query(params[:p])
-        
-    elsif params[:u]
-        @properties = Property.find_all_by_query(params[:u])
-        
-    else
+        elsif params[:b]
+            @properties = Property.find_all_by_bedroom(params[:b])
+            
+            elsif params[:ba]
+            @properties = Property.find_all_by_bathroom(params[:ba])
+            
+            elsif params[:r]
+            @properties = Property.find_all_by_rent(params[:r])
+            
+            elsif params[:p]
+            @properties = Property.find_all_by_pets(params[:p])
+            
+            elsif params[:u]
+            @properties = Property.find_all_by_utilities(params[:u])
+            
+            elsif params[:z]
+            @properties = Property.find_all_by_zip(params[:z])
+        else
         @properties = Property.all
     end
   end
