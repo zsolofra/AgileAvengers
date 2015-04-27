@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+<strong>User Overall Rating:</strong> <%= rating_for @review.property, "overall_rating", disabled: true %>
+
 <p>
   <strong>Review:</strong>
   <%= @review.review %>
