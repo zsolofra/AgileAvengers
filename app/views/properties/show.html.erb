@@ -65,9 +65,21 @@
 
 <img src="http://maps.google.com/maps/api/staticmap?center=<%=@property.latitude%>,<%=@property.longitude%>&markers=icon:http://tinyurl.com/2ftvtt6|<%=@property.latitude%>,<%=@property.longitude%>&zoom=14&size=400x400&sensor=false" alt="Google Map Image" />
 
-<br>
-<strong>Overall Rating:</strong> <%= rating_for @property, "overall_rating", disabled: true %>
-<!--<strong>Overall Rating:</strong> <%= imdb_style_rating_for @property, "overall_rating", disabled: true %>-->
+<% if @property.reviews.any? %>
+  <p>
+    <%= rating_for @property, "overall_rating", disable_after_rate: true, imdb_avg: true %>
+    &nbsp;
+    <strong>Rating</strong>
+  </p>
+<% else %>
+  <p>
+    <%= image_tag "mid-star.png" %>
+    <br>
+    <strong>Not Rated</strong>
+  </p>
+<% end %>
+
+  <br>
   <strong>Top Review</strong>
   <% if @property.reviews.any? %>
     <%= Review.find_by(property_id: @property.id).review %>
