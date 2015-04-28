@@ -67,7 +67,7 @@
 
 <br>
 <strong>Overall Rating:</strong> <%= rating_for @property, "overall_rating", disabled: true %>
-
+<!--<strong>Overall Rating:</strong> <%= imdb_style_rating_for @property, "overall_rating", disabled: true %>-->
   <strong>Top Review</strong>
   <% if @property.reviews.any? %>
     <%= Review.find_by(property_id: @property.id).review %>
