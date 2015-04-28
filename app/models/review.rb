@@ -5,7 +5,7 @@ class Review < ActiveRecord::Base
   validates :user_id, :uniqueness => { :scope => :property_id,
     :message => "may only write one review per property." }
   
-  ratyrate_rateable 'visual_effects', 'original_score', 'director', 'custome_design'
+  ratyrate_rateable 'property_rating'
   
   def score
     return self.get_upvotes.size - self.get_downvotes.size
