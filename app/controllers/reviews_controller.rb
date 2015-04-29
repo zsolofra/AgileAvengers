@@ -34,7 +34,7 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = @property.reviews.build(review_params)
-    @review.user_id = current_user.id
+   # @review.user_id = current_user.id
 
     respond_to do |format|
       if @review.save
@@ -71,7 +71,7 @@ class ReviewsController < ApplicationController
     @review.destroy
     
     respond_to do |format|
-      format.html { redirect_to(property_reviews_url) }
+      format.html { redirect_to(@property) }
       format.xml { head :ok }
     end
   end
