@@ -47,6 +47,12 @@ class Property < ActiveRecord::Base
     Property.where(['lower(pets) like ?', pets])
   end
 
+  def self.find_all_by_rent(rent)
+    rent = rent.downcase
+    rent = "%#{rent}%"
+    Property.where(['lower(rent) like ?', rent])
+  end
+
   def rent=(value)
     if value.to_s.delete('^0-9.').to_i != 0
       write_attribute(:rent, value.to_s.delete('^0-9.').to_i)
