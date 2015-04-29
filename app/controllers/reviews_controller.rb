@@ -34,6 +34,7 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = @property.reviews.build(review_params)
+    @review.user_id = current_user.id
 
     respond_to do |format|
       if @review.save
@@ -66,6 +67,9 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1.json
   def destroy
     @review = property.reviews.find(params[:id])
+    
+    @review = @property.reviews.find(params[:id])
+    
     @review.destroy
     
     respond_to do |format|
