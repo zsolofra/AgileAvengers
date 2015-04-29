@@ -10,6 +10,7 @@
 <table>
   <thead>
     <tr>
+      <th>Rating</th>
       <th>Review</th>
       <th>Review Date</th>
       <th>Likes</th>
@@ -20,6 +21,7 @@
   <tbody>
     <% @reviews.each do |review| %>
       <tr>
+        <td><%= rating_for @property, "overall_rating" %></td>
         <td><%= link_to truncate(review.review, :length => 15), [review.property, review] %></td>  
         <td><%= review.created_at.strftime("%B %d, %Y") %></td>      
         <td><%= review.score %></td>

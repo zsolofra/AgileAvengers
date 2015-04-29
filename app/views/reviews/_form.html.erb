@@ -18,6 +18,18 @@
   </div>
   <div class="field">
     <strong><%= f.label :review %>:</strong>Required<br>
+
+      <div class="small-2 large-4 columns">
+        <br>
+        
+        <p>
+          Rate Property: <%= rating_for @property, "overall_rating", disable_after_rate: false %>
+        </p>
+        
+      </div>
+    </div>
+  <div class="field">
+    <strong><%= f.label :review %>:</strong><br>
     <%= f.text_area :review %>
   </div>
   <div class="actions">

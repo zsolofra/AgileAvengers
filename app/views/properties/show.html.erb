@@ -68,6 +68,22 @@
 <br>
 <br>
 <hr>
+
+<% if @property.reviews.any? %>
+  <p>
+    <%= rating_for @property, "overall_rating", imdb_avg: true %>
+    &nbsp;
+    <strong>Rating</strong>
+  </p>
+<% else %>
+  <p>
+    <%= image_tag "mid-star.png" %>
+    <br>
+    <strong>Not Rated</strong>
+  </p>
+<% end %>
+
+  <br>
   <% if @property.reviews.any? %>
     <table>
   <thead>

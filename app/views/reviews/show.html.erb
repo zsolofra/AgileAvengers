@@ -1,5 +1,10 @@
 <p id="notice"><%= notice %></p>
 
+ 
+<!--<% if @review %>-->
+  <p><strong>User Rating:</strong> <%= rating_for @property, "overall_rating", disable_after_rate: true %></p>
+<!--<% end %>-->
+
 <p>
   <strong>Review:</strong>
   <%= @review.review %>
