@@ -18,7 +18,7 @@
   </thead>
 
   <tbody>
-    <% @reviews.each do |review| %>
+    <% @property.reviews.each do |review| %>
       <tr>
         <td><%= link_to truncate(review.review, :length => 15), [review.property, review] %></td>  
         <td><%= review.created_at.strftime("%B %d, %Y") %></td>      

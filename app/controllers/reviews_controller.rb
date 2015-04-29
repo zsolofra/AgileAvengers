@@ -66,7 +66,6 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
-    @review = property.reviews.find(params[:id])
     
     @review = @property.reviews.find(params[:id])
     
