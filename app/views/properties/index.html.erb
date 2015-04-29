@@ -9,43 +9,6 @@
  <input type="submit" value="Search">
 <% end %></p>
 
-<% if !@properties.empty? %>
-<table>
-  <thead>
-    <tr>
-      <th>Address</th>
-      <th>City</th>
-      <th>State</th>
-      <th>Zip</th>
-      <th>Bedrooms</th>
-      <th>Bathrooms</th>
-      <th>Rent</th>
-      <th>Pets</th>
-      <th>Utilities</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-    <% @properties.each do |property| %>
-      <tr>
-        <td><%= link_to property.address, property %></td>
-        <td><%= property.city  %></td>
-        <td><%= property.state%></td>
-        <td><%= property.zip%></td>
-        <td><%= property.bedrooms %></td>
-        <td><%= property.bathrooms %></td>
-        <td><%= property.rent %></td>
-        <td><%= property.pets %></td>
-        <td><%= property.utilities %></td>
-        <td><%= property.description %></td>
-        <td><%= link_to 'Edit', edit_property_path(property) %></td>
-      </tr>
-    <% end%>
-  </tbody>
-</table>
-<% end %>
-
-
 <p>
  <%= form_tag properties_url, method: :get do %>
  <label for="zip">Filter by City or Zip: </label>
@@ -82,6 +45,42 @@
  <input type="utilities" id="utilites" name="u" value="<%= params[:u] %>">
  <input type="submit" value="Search">
 <% end %></p>
+
+<% if !@properties.empty? %>
+<table>
+  <thead>
+    <tr>
+      <th>Address</th>
+      <th>City</th>
+      <th>State</th>
+      <th>Zip</th>
+      <th>Bedrooms</th>
+      <th>Bathrooms</th>
+      <th>Rent</th>
+      <th>Pets</th>
+      <th>Utilities</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+    <% @properties.each do |property| %>
+      <tr>
+        <td><%= link_to property.address, property %></td>
+        <td><%= property.city  %></td>
+        <td><%= property.state%></td>
+        <td><%= property.zip%></td>
+        <td><%= property.bedrooms %></td>
+        <td><%= property.bathrooms %></td>
+        <td><%= property.rent %></td>
+        <td><%= property.pets %></td>
+        <td><%= property.utilities %></td>
+        <td><%= property.description %></td>
+        <td><%= link_to 'Edit', edit_property_path(property) %></td>
+      </tr>
+    <% end%>
+  </tbody>
+</table>
+<% end %>
 
 <p> Don't see your property? &nbsp;<%= link_to 'Add Property', new_property_path %> &nbsp; 
 <%= link_to 'New Search', home_index_path %>
