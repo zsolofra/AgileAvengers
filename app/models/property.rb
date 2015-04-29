@@ -36,7 +36,11 @@ class Property < ActiveRecord::Base
   end
 
   def self.find_all_by_utilities(utilities)
-    utilities = utilities.downcase
+    if !utilities.match(/^(\d)+$/)
+      utilities = utilities.downcase.to_s.delete('^0-9.').to_i
+    else 
+      utilities = utilities.downcase
+    end
     utilities = "%#{utilities}%"
     Property.where(['lower(utilities) like ?', utilities])
   end
@@ -48,20 +52,12 @@ class Property < ActiveRecord::Base
   end
 
   def self.find_all_by_rent(rent)
-    rent = rent.downcase
+    if !rent.match(/^(\d)+$/)
+      rent = rent.downcase.to_s.delete('^0-9.').to_i
+    else 
+      rent = rent.downcase
+    end
     rent = "%#{rent}%"
     Property.where(['lower(rent) like ?', rent])
-  end
-
-  def rent=(value)
-    if value.to_s.delete('^0-9.').to_i != 0
-      write_attribute(:rent, value.to_s.delete('^0-9.').to_i)
-    else
-      write_attribute(:rent, nil)
-    end
-  end
-  
-  def rent
-    number_to_currency(self[:rent])
   end
 end
