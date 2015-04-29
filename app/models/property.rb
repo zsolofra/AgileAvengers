@@ -64,12 +64,4 @@ class Property < ActiveRecord::Base
   def rent
     number_to_currency(self[:rent])
   end
-  
-  def utilities
-    if self[:utilities].match(/^(\d)+$/)
-      return number_to_currency(self[:utilities])
-    else
-      return self[:utilities]
-    end
-  end
 end
