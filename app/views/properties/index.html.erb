@@ -73,7 +73,7 @@
         <td><%= property.bathrooms %></td>
         <td><%= property.rent %></td>
         <td><%= property.pets %></td>
-        <td><%= property.utilities %></td>
+        <td><%= display_utilities_for(property) %></td>
         <td><%= property.description %></td>
         <td><%= link_to 'Edit', edit_property_path(property) %></td>
       </tr>
