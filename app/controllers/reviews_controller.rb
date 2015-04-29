@@ -47,6 +47,7 @@ class ReviewsController < ApplicationController
   def create
     
     @review = @property.reviews.build(review_params)
+    @review.user_id = current_user.id
 
     respond_to do |format|
       if @review.save

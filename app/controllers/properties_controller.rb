@@ -1,11 +1,29 @@
 class PropertiesController < ApplicationController
   before_action :authenticate_user!, :except => [:index, :show]
-  before_action :set_property, only: [:show, :edit, :update, :destroy]
+  before_action :set_property, only: [:show, :edit, :update]
   # GET /properties
   # GET /properties.json
   def index
     if params[:q]
         @properties = Property.find_all_by_query(params[:q])
+        
+        elsif params[:b]
+            @properties = Property.find_all_by_bedroom(params[:b])
+            
+            elsif params[:ba]
+            @properties = Property.find_all_by_bathroom(params[:ba])
+            
+            elsif params[:r]
+            @properties = Property.find_all_by_rent(params[:r])
+            
+            elsif params[:p]
+            @properties = Property.find_all_by_pets(params[:p])
+            
+            elsif params[:u]
+            @properties = Property.find_all_by_utilities(params[:u])
+            
+            elsif params[:z]
+            @properties = Property.find_all_by_zip(params[:z])
         else
         @properties = Property.all
     end
@@ -52,16 +70,6 @@ class PropertiesController < ApplicationController
         format.html { render :edit }
         format.json { render json: @property.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # DELETE /properties/1
-  # DELETE /properties/1.json
-  def destroy
-    @property.destroy
-    respond_to do |format|
-      format.html { redirect_to properties_url, notice: 'Property was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
