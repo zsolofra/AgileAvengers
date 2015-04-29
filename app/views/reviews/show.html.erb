@@ -15,6 +15,7 @@
 
 <br><br>
 
+<%= link_to 'Back to property', property_path(@property) %>
 <% if signed_in? %>
   <% if current_user.id = @review.user_id %>
     <% if !@review.has_time_passed? %>
