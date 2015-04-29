@@ -36,7 +36,7 @@ class Property < ActiveRecord::Base
   end
 
   def self.find_all_by_utilities(utilities)
-    if !utilities.match(/^(\d)+$/)
+    if utilities.to_s.delete('^0-9.').to_i != 0
       utilities = utilities.downcase.to_s.delete('^0-9.').to_i
     else 
       utilities = utilities.downcase
@@ -52,7 +52,7 @@ class Property < ActiveRecord::Base
   end
 
   def self.find_all_by_rent(rent)
-    if !rent.match(/^(\d)+$/)
+    if rent.to_s.delete('^0-9.').to_i != 0
       rent = rent.downcase.to_s.delete('^0-9.').to_i
     else 
       rent = rent.downcase
