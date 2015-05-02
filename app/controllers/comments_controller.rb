@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   def create
         
     @comment = @review.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    @review.user = current_user
 
     respond_to do |format|
       if @comment.save

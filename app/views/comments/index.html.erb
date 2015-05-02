@@ -24,7 +24,7 @@
       <td><%= comment.score %></td>
       <td><%= comment.created_at.strftime("%B %d, %Y") %></td>
       <% if signed_in? %>
-        <% if current_user.id = comment.user_id %>
+        <% if current_user.email == review.user.email %>
           <% if !comment.has_time_passed? %>
             <td><%= link_to 'Edit', edit_property_review_comment_path(@property, @review, comment.id) %></td>
           <% end%>
