@@ -2,6 +2,9 @@ class CommentsController < ApplicationController
   before_action :set_property
   before_action :set_review
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in, only: [:edit, :destroy]
+  before_action :authorize, only: [:edit, :destroy]
+  before_action :has_time_passed, only: [:edit, :destroy]
   
   
   def index
@@ -26,7 +29,7 @@ class CommentsController < ApplicationController
   def create
         
     @comment = @review.comments.build(comment_params)
-    @review.user = current_user
+    @comment.user = current_user
 
     respond_to do |format|
       if @comment.save
@@ -69,7 +72,21 @@ class CommentsController < ApplicationController
     redirect_to :back
   end
   
+  def authorize
+    unless @comment.user.email == current_user.email
+      flash[:notice] = "You are not the owner of this review, you are not permitted to edit."
+      redirect_to property_review_comments_path(@comment.review.property, @comment.review, @comment)
+      return false
+    end
+  end
   
+  def has_time_passed
+    unless @comment.created_at > 30.minutes.ago
+      flash[:notice] = "You are not the owner of this review, you are not permitted to edit."
+      redirect_to property_review_comments_path(@comment.review.property, @comment.review, @comment)
+      return false
+    end
+  end
   
   private
     # Use callbacks to share common setup or constraints between actions.
