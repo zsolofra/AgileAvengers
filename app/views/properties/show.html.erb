@@ -35,10 +35,10 @@
   </p>
 <% end %>
 
-<% if !@property.rent.nil? %>
+<% if !@property.rent.equal?(0) && !@property.rent.nil? %>
   <p>
     <strong>Rent:</strong>
-    <%= @property.rent %>
+    <%= display_rent_for(@property) %>
   </p>
 <% end %>
 
@@ -52,7 +52,7 @@
 <% if !@property.utilities.empty? %>
   <p>
     <strong>Utilities:</strong>
-    <%= @property.utilities %>
+    <%= display_utilities_for(@property) %>
   </p>
 <% end %>
 
