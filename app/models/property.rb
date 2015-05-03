@@ -4,6 +4,7 @@ class Property < ActiveRecord::Base
   validates_uniqueness_of :address
   geocoded_by :full_address
   after_validation :geocode
+  ratyrate_rateable 'overall_rating'
 
   def full_address
     "#{self.address} #{self.city} #{self.state} #{self.zip}"
@@ -71,5 +72,9 @@ class Property < ActiveRecord::Base
     else
       return self[:utilities]
     end
+  end
+  
+  def average_rating
+    ratings.sum(:score) / ratings.size
   end
 end

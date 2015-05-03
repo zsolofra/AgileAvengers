@@ -66,14 +66,13 @@ class ReviewsController < ApplicationController
   # DELETE /reviews/1
   # DELETE /reviews/1.json
   def destroy
-    @review = property.reviews.find(params[:id])
     
     @review = @property.reviews.find(params[:id])
     
     @review.destroy
     
     respond_to do |format|
-      format.html { redirect_to(property_reviews_url) }
+      format.html { redirect_to(@property) }
       format.xml { head :ok }
     end
   end
