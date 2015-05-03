@@ -23,11 +23,7 @@ class CommentsController < ApplicationController
   
   def create
     @comment = @review.comments.build(comment_params)
-    
-        
-    @comment = @review.comments.build(comment_params)
     @comment.user_id = current_user.id
-
     respond_to do |format|
       if @comment.save
         format.html { redirect_to([@property, @review, @comment], :notice => 'Comment was successfully created.') }
