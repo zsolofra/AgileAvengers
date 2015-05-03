@@ -62,19 +62,20 @@
     <%= @property.description %>
   </p>
 <% end %>
+
 <% if @property.reviews.any? %>
   <p>
-    <%= rating_for @property, "overall_rating", imdb_avg: true %>
-    &nbsp;
-    <strong>Rating</strong>
-  </p>
-<% else %>
-  <p>
+   <%= rating_for @property, "overall_rating", imdb_avg: true %>
+   &nbsp; 
+   <strong>Rating</strong>
+  </p> 
+<% else %>  <p>
     <%= image_tag "mid-star.png" %>
-    <br>
+  <br>
     <strong>Not Rated</strong>
   </p>
 <% end %>
+
 <img src="http://maps.google.com/maps/api/staticmap?center=<%=@property.latitude%>,<%=@property.longitude%>&markers=icon:http://tinyurl.com/2ftvtt6|<%=@property.latitude%>,<%=@property.longitude%>&zoom=14&size=400x400&sensor=false" alt="Google Map Image" />
 
 <br>
@@ -101,7 +102,6 @@
         <td><%= review.created_at.strftime("%B %d, %Y") %></td>      
         <td><%= review.score %></td>
         <td><%= link_to 'Comments', property_review_comments_path(@property, review, @comment) %></td> 
-        
         <% if signed_in? %>
           <% if current_user.id = review.user_id %>
             <% if !review.has_time_passed? %>
