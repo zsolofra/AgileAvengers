@@ -2,49 +2,22 @@
 
 <h1>Listing Properties</h1>	
 
-<p>
- <%= form_tag properties_url, method: :get do %>
- <label for="query">Search for Address: </label>
- <input type="search" id="query" name="q" value="<%= params[:q] %>">
- <input type="submit" value="Search">
-<% end %></p>
-
-<p>
- <%= form_tag properties_url, method: :get do %>
- <label for="zip">Filter by City or Zip: </label>
- <input type="search" id="zip" name="z" value="<%= params[:z] %>">
- <input type="submit" value="Search">
-<% end %></p>
-<p>
- <%= form_tag properties_url, method: :get do %>
- <label for="bedrooms">Filter by Bedrooms: </label>
- <input type="bedrooms" id="bedrooms" name="b" value="<%= params[:b] %>">
- <input type="submit" value="Search">
-<% end %></p>
-<p>
- <%= form_tag properties_url, method: :get do %>
- <label for="bathrooms">Filter by Bathrooms: </label>
- <input type="bathrooms" id="bathrooms" name="ba" value="<%= params[:ba] %>">
- <input type="submit" value="Search">
-<% end %></p>
-<p>
- <%= form_tag properties_url, method: :get do %>
- <label for="rent">Filter by Cost of Rent: </label>
- <input type="rent" id="rent" name="r" value="<%= params[:r] %>">
- <input type="submit" value="Search">
-<% end %></p>
-<p>
- <%= form_tag properties_url, method: :get do %>
- <label for="pets">Filter by Pets: </label>
- <input type="pets" id="pets" name="p" value="<%= params[:p] %>">
- <input type="submit" value="Search">
-<% end %></p>
-<p>
- <%= form_tag properties_url, method: :get do %>
- <label for="utilities">Filter by Utility Costs: </label>
- <input type="utilities" id="utilites" name="u" value="<%= params[:u] %>">
- <input type="submit" value="Search">
-<% end %></p>
+<%= form_tag properties_url, method: :get do %>
+  <label for="search_selection">Search By:</label>
+  
+<select name="search_type">
+    <option value="Address">Address</option>
+    <option value="Zip">City or Zip</option>
+    <option value="Bedrooms">Bedrooms</option>
+    <option value="Bathrooms">Bathrooms</option>
+    <option value="Rent">Rent</option>
+    <option value="Pets">Pets</option>
+    <option value="Utilities">Utilities</option>')
+  </select>
+  
+<input type = "search" id="query" name="s" value="<%= params[:s] %>">
+<input type="submit" value="Search" />
+<% end%>
 
 <% if !@properties.empty? %>
 <table>
