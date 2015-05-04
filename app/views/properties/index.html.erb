@@ -2,22 +2,7 @@
 
 <h1>Listing Properties</h1>	
 
-<%= form_tag properties_url, method: :get do %>
-  <label for="search_selection">Search By:</label>
-  
-<select name="search_type">
-    <option value="Address">Address</option>
-    <option value="Zip">City or Zip</option>
-    <option value="Bedrooms">Bedrooms</option>
-    <option value="Bathrooms">Bathrooms</option>
-    <option value="Rent">Rent</option>
-    <option value="Pets">Pets</option>
-    <option value="Utilities">Utilities</option>')
-  </select>
-  
-<input type = "search" id="query" name="s" value="<%= params[:s] %>">
-<input type="submit" value="Search" />
-<% end%>
+<%= render "/home/search" %>
 
 <% if !@properties.empty? %>
 <table>
