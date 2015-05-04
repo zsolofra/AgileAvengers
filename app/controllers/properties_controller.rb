@@ -4,28 +4,26 @@ class PropertiesController < ApplicationController
   # GET /properties
   # GET /properties.json
   def index
-    if params[:q]
-        @properties = Property.find_all_by_query(params[:q])
-        
-        elsif params[:b]
-            @properties = Property.find_all_by_bedroom(params[:b])
-            
-            elsif params[:ba]
-            @properties = Property.find_all_by_bathroom(params[:ba])
-            
-            elsif params[:r]
-            @properties = Property.find_all_by_rent(params[:r])
-            
-            elsif params[:p]
-            @properties = Property.find_all_by_pets(params[:p])
-            
-            elsif params[:u]
-            @properties = Property.find_all_by_utilities(params[:u])
-            
-            elsif params[:z]
-            @properties = Property.find_all_by_zip(params[:z])
-        else
-        @properties = Property.all
+    
+
+
+    case params[:search_type]
+    when "Address"
+      @properties = Property.find_all_by_query(params[:s])
+    when "Zip"
+      @properties = Property.find_all_by_zip(params[:s])
+    when "Bedrooms"
+      @properties = Property.find_all_by_bedroom(params[:s])     
+    when "Bathrooms"
+      @properties = Property.find_all_by_bathroom(params[:s])
+    when "Rent"
+      @properties = Property.find_all_by_rent(params[:s])
+    when "Utilities"
+      @properties = Property.find_all_by_utilities(params[:s])
+    when "Pets"
+      @properties = Property.find_all_by_pets(params[:s])
+    else 
+      @properties = Property.all
     end
   end
   
