@@ -127,4 +127,19 @@ class PropertyTest < ActiveSupport::TestCase
     property.valid?
     assert property.errors[:address].include?("has already been taken")
   end
+
+  test "should find a match on title" do
+    test_search = Property.create(address: "1234 Proper Street",
+        property.city = "Eau Claire",
+        property.state = "WI",
+        property.zip = "54751",
+        property.bedrooms = "",
+        property.bathrooms = "",
+        property.rent = "",
+        property.pets = "",
+        property.utilities = "",
+        property.description = "",
+        property.save)
+    assert_equal test_search, Property.find_all_by_query("1234 proper street").first
+  end
 end
