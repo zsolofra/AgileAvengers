@@ -5,7 +5,8 @@
 <%= render "/home/search" %>
 
 <% if !@properties.empty? %>
-<table>
+<div class="table-responsive">
+<table class="table table-hover">
   <thead>
     <tr>
       <th>Address</th>
@@ -38,6 +39,7 @@
     <% end%>
   </tbody>
 </table>
+</div>
 <% end %>
 
 <p> Don't see your property? &nbsp;<%= link_to 'Add Property', new_property_path %> &nbsp; 
