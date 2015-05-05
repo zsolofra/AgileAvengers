@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   
   def signed_in
     unless signed_in?
-      flash[:notice] = "You must be signed in to edit, please sign in."
+      flash[:notice] = "You must be signed to continue, please sign in."
       redirect_to new_user_session_path
       return false
     end
