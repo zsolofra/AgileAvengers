@@ -59,13 +59,13 @@ class CommentsController < ApplicationController
   def upvote
     @comment = Comment.find(params[:id])
     @comment.upvote_by current_user
-    redirect_to :back
+    redirect_to property_review_comments_path(@property, @review, @comment)
   end
   
   def downvote
     @comment = Comment.find(params[:id])
     @comment.downvote_by current_user
-    redirect_to :back
+    redirect_to property_review_comments_path(@property, @review, @comment)
   end
   
   private
