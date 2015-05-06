@@ -2,6 +2,9 @@ class CommentsController < ApplicationController
   before_action :set_property
   before_action :set_review
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in, only: [:edit, :destroy]
+  before_action :authorize, only: [:edit, :destroy]
+  before_action :has_time_passed, only: [:edit, :destroy]
   
   
   def index
@@ -23,7 +26,9 @@ class CommentsController < ApplicationController
   
   def create
     @comment = @review.comments.build(comment_params)
+    @comment.user = current_user
     @comment.user_id = current_user.id
+    
     respond_to do |format|
       if @comment.save
         format.html { redirect_to([@property, @review, @comment], :notice => 'Comment was successfully created.') }
@@ -63,6 +68,22 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @comment.downvote_by current_user
     redirect_to :back
+  end
+  
+  def authorize
+    unless @comment.user.email == current_user.email
+      flash[:notice] = "You are not the owner of this review, you are not permitted to edit."
+      redirect_to property_review_comments_path(@comment.review.property, @comment.review, @comment)
+      return false
+    end
+  end
+  
+  def has_time_passed
+    unless @comment.created_at > 30.minutes.ago
+      flash[:notice] = "You are not the owner of this review, you are not permitted to edit."
+      redirect_to property_review_comments_path(@comment.review.property, @comment.review, @comment)
+      return false
+    end
   end
   
   private
