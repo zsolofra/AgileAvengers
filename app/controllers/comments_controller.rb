@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
   before_action :set_property
   before_action :set_review
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :signed_in, only: [:edit, :destroy]
+  before_action :signed_in, only: [:new, :edit, :destroy]
   before_action :authorize, only: [:edit, :destroy]
   before_action :has_time_passed, only: [:edit, :destroy]
   

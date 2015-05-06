@@ -101,7 +101,7 @@ class ReviewsController < ApplicationController
   def authorize
     unless @review.user.email == current_user.email
       flash[:notice] = "You are not the owner of this review, you are not permitted to edit."
-      redirect_to property_reviews_path(@review.property, @review)
+      redirect_to property_path(@review.property)
       return false
     end
   end
@@ -109,7 +109,7 @@ class ReviewsController < ApplicationController
   def has_time_passed
     unless @review.created_at > 30.minutes.ago
       flash[:notice] = "You are not the owner of this review, you are not permitted to edit."
-      redirect_to property_reviews_path(@review.property, @review)
+      redirect_to property_path(@review.property)
       return false
     end
   end
