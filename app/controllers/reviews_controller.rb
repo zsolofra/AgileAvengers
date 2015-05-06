@@ -1,6 +1,15 @@
 class ReviewsController < ApplicationController
   before_action :set_property
   before_action :set_review, only: [:show, :edit, :update, :destroy]
+  before_action :signed_in, only: [:new, :edit, :destroy]
+  before_action :authorize, only: [:edit, :destroy]
+  before_action :has_time_passed, only: [:edit, :destroy]
+
+  # GET /reviews
+  # GET /reviews.json
+  def index
+    @reviews = @property.reviews.all
+  end
 
 
   # GET /reviews/1
@@ -34,7 +43,7 @@ class ReviewsController < ApplicationController
   # POST /reviews.json
   def create
     @review = @property.reviews.build(review_params)
-    @review.user_id = current_user.id
+    @review.user = current_user
 
     respond_to do |format|
       if @review.save
@@ -89,6 +98,22 @@ class ReviewsController < ApplicationController
     redirect_to :back
   end
 
+  def authorize
+    unless @review.user.email == current_user.email
+      flash[:notice] = "You are not the owner of this review, you are not permitted to edit."
+      redirect_to property_reviews_path(@review.property, @review)
+      return false
+    end
+  end
+  
+  def has_time_passed
+    unless @review.created_at > 30.minutes.ago
+      flash[:notice] = "You are not the owner of this review, you are not permitted to edit."
+      redirect_to property_reviews_path(@review.property, @review)
+      return false
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_review
@@ -101,6 +126,6 @@ class ReviewsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def review_params
-      params.require(:review).permit(:property_id, :likes, :dislikes, :user_id, :review)
+      params.require(:review).permit(:property_id, :review, :user_id)
     end
 end

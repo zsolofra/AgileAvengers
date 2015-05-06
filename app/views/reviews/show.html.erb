@@ -22,7 +22,7 @@
 
 <%= link_to 'Back to property', property_path(@property) %>
 <% if signed_in? %>
-  <% if current_user.id = @review.user_id %>
+  <% if current_user.email == @review.user.email %>
     <% if !@review.has_time_passed? %>
       <%= link_to 'Edit', edit_property_review_path(@review.property, @review) %> |
     <% end %>
