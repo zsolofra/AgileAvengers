@@ -92,11 +92,11 @@
           
           <div class="bjpReviewBlock">
             <div id="bjpReviewHeader">
-              <p><%= review.created_at.strftime("%B %d, %Y") %></p>
+              <p id="bjpReviewDate"><%= review.created_at.strftime("%B %d, %Y") %></p>
               <div id="bjpReviewStar"><%= rating_for @property, "overall_rating" %></div>
-              <p id="bjpReviewScore">Likes: <%= review.score %></p>
+              
             </div>
-            
+            <p id="bjpReviewScore">Likes: <%= review.score %></p>
             <p id="bjpReviewBody">
             <%= link_to review.review, property_review_comments_path(@property, review, @comment) %>
             </p> 
