@@ -3,7 +3,6 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .headerwrapper {
   position: relative;
-  //background-color: red;
 }
 
 
@@ -16,18 +15,23 @@
 }
 
 .bjpSearch form {
-
   color: white;
   position: absolute;
   left: 300px;
   bottom: 10px;
+}
 
+@media (max-width: 400px) { 
+  .bjpSearch form {
+    color: white;
+    position: absolute;
+    left: 10px;
+    bottom: 0px;
+  }
 }
 
 .bjpSearch form input {
-
-color: black;
-
+  color: black;
 }
 
 .bjpSearch form input { 
@@ -35,24 +39,19 @@ color: black;
 }
 
 body {
-  
   background-color: #D7D1C9;
-
 }
 
 .container {
-  //width: 1080px;
   box-shadow: 2px 2px 20px, -2px -2px 20px;
   position: relative;
   background-color: white;
-  //height: 1000px;
   margin-bottom: 50px;
   border-radius: 8px 8px 20px 20px;
-  
 }
 
 footer {
-   background-color: #3D3934;
+  background-color: #3D3934;
   height: 80px;
   color: white;
 }
