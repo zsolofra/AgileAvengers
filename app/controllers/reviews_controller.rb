@@ -11,10 +11,10 @@ class ReviewsController < ApplicationController
     @reviews = @property.reviews.all
   end
 
+
   # GET /reviews/1
   # GET /reviews/1.json
   def show
-    
     @review = @property.reviews.find(params[:id])
     
     respond_to do |format|
@@ -26,7 +26,6 @@ class ReviewsController < ApplicationController
 
   # GET /reviews/new
   def new
-    
     @review = @property.reviews.build
     
     respond_to do |format|
@@ -43,13 +42,12 @@ class ReviewsController < ApplicationController
   # POST /reviews
   # POST /reviews.json
   def create
-    
     @review = @property.reviews.build(review_params)
     @review.user = current_user
 
     respond_to do |format|
       if @review.save
-        format.html { redirect_to([@review.property, @review], :notice => 'Review was successfully created.') }
+        format.html { redirect_to([@property], :notice => 'Review was successfully created.') }
         format.xml { render :xml => @review, :status => :created, :location => [@review.property, @review]}
       else
         format.html { render :action => "new" }
@@ -61,7 +59,6 @@ class ReviewsController < ApplicationController
   # PATCH/PUT /reviews/1
   # PATCH/PUT /reviews/1.json
   def update
-    
     @review = @property.reviews.find(params[:id])
     
     respond_to do |format|
@@ -84,7 +81,7 @@ class ReviewsController < ApplicationController
     @review.destroy
     
     respond_to do |format|
-      format.html { redirect_to(property_reviews_url) }
+      format.html { redirect_to(@property) }
       format.xml { head :ok }
     end
   end

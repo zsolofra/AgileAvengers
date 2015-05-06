@@ -9,13 +9,11 @@ class CommentsController < ApplicationController
   
   def index
     @comment = @review.comments.all
-   # @comment = Comment.all
-    
   end
   
   def show
     @comment = @review.comments.find(params[:id])
-    
+
     respond_to do |format|
       format.html
       format.xml {render :xml => @comment}
@@ -27,10 +25,10 @@ class CommentsController < ApplicationController
   end
   
   def create
-        
     @comment = @review.comments.build(comment_params)
     @comment.user = current_user
-
+    @comment.user_id = current_user.id
+    
     respond_to do |format|
       if @comment.save
         format.html { redirect_to([@property, @review, @comment], :notice => 'Comment was successfully created.') }
@@ -43,7 +41,7 @@ class CommentsController < ApplicationController
   end
   
   def edit 
-    #@comment = @review.comments.find(params[:id])
+   
   end
   
   def update
