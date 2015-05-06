@@ -4,7 +4,6 @@
 .bjpReviewsWrapper {
   position: relative;
   clear: both;
-  //background-color: yellow;
   overflow: scroll;
   overflow-x: hidden;
   height: 350px;
@@ -17,30 +16,35 @@
   left: 50px;
   width: 75%;
   height: 200px;
- // border: 1px solid black;
-  //padding-top: 10px;
   background-color: #FFE6C2;
-
 }
 
 #bjpReviewHeader {
   position: relative;
   height: 40px;
-  //border: 1px solid black;
   background-color: #8B847B;
+}
+
+#bjpReviewDate {
+  position: absolute;
+  bottom: 4px;
+  left: 10px;
+  color: white;
+  font-style: italic;
+  font-size: 20px;
 
 }
 
 #bjpReviewStar { 
   position: absolute;
-  right: 30px;
-  bottom: 5px; 
+  left: 200px;
+  bottom: 15px; 
 }
 
 #bjpReviewScore {
-position: absolute;
-  left: 240px;
-  bottom: 5px;
+  position: absolute;
+  left: 22px;
+  top: 40px;
 
 }
 
