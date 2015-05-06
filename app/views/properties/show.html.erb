@@ -1,124 +1,113 @@
 <p id="notice"><%= notice %></p>
 <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
 
-<p>
-  <strong>Address:</strong>
-  <%= @property.address %>
-</p>
+<div class="bjpPropertyInfo">
+  <div class="bjpPropertyDetails">
+    
+    <h1>
+      <%= @property.address %>
+    </h1>
+    
+    <h3>
+      <%= @property.city %>,<%= @property.state %>&nbsp;<%= @property.zip %>
+    </h3>
+    
+  <% if !@property.bedrooms.empty? %>
+    <p>
+      <strong>Bedrooms:</strong>
+      <%= @property.bedrooms %>
+    </p>
+  <% end %>
 
-<p>
-  <strong>City:</strong>
-  <%= @property.city %>
-</p>
+  <% if !@property.bathrooms.empty? %>
+    <p>
+      <strong>Bathrooms:</strong>
+      <%= @property.bathrooms %>
+    </p>
+  <% end %>
 
-<p>
-  <strong>State:</strong>
-  <%= @property.state %>
-</p>
+  <% if !@property.rent.equal?(0) && !@property.rent.nil? %>
+    <p>
+      <strong>Rent:</strong>
+      <%= display_rent_for(@property) %>
+    </p>
+  <% end %>
 
-<p>
-  <strong>Zip:</strong>
-  <%= @property.zip %>
-</p>
+  <% if !@property.pets.empty? %>
+    <p>
+      <strong>Pets:</strong>
+      <%= @property.pets %>
+    </p>
+  <% end %>
 
-<% if !@property.bedrooms.empty? %>
-  <p>
-    <strong>Bedrooms:</strong>
-    <%= @property.bedrooms %>
-  </p>
-<% end %>
+  <% if !@property.utilities.empty? %>
+    <p>
+      <strong>Utilities:</strong>
+      <%= display_utilities_for(@property) %>
+    </p>
+  <% end %>
 
-<% if !@property.bathrooms.empty? %>
-  <p>
-    <strong>Bathrooms:</strong>
-    <%= @property.bathrooms %>
-  </p>
-<% end %>
+  <% if !@property.description.empty? %>
+    <div class="bjpPropertyDescription">
+      <h4>Property Description</h4>
+      <blockquote>
+      <%= @property.description %>
+      </blockquote>
+    </div>
+  <% end %>
+<%= link_to 'New Review', new_property_review_path(@property, @review) %>
+  <%= link_to 'Back', properties_path %>
+    <div id="bjpPropertyRating">
+      <% if @property.reviews.any? %>
+        <p>
+          <%= rating_for @property, "overall_rating", imdb_avg: true %>
+        &nbsp; 
+        </p> 
+      <% else %>  
+        <p>
+          <%= image_tag "mid-star.png" %>
+        </p>
+      <% end %>
+    </div>
+  </div>
 
-<% if !@property.rent.equal?(0) && !@property.rent.nil? %>
-  <p>
-    <strong>Rent:</strong>
-    <%= display_rent_for(@property) %>
-  </p>
-<% end %>
+  <div class="bjpGoogleMap">
+    <img id="googleMap" src="http://maps.google.com/maps/api/staticmap?center=<%=@property.latitude%>,<%=@property.longitude%>&markers=icon:http://tinyurl.com/2ftvtt6|<%=@property.latitude%>,<%=@property.longitude%>&zoom=14&size=400x400&sensor=false" alt="Google Map Image" />
+  </div>
+</div>
 
-<% if !@property.pets.empty? %>
-  <p>
-    <strong>Pets:</strong>
-    <%= @property.pets %>
-  </p>
-<% end %>
-
-<% if !@property.utilities.empty? %>
-  <p>
-    <strong>Utilities:</strong>
-    <%= display_utilities_for(@property) %>
-  </p>
-<% end %>
-
-<% if !@property.description.empty? %>
-  <p>
-    <strong>Description:</strong>
-    <%= @property.description %>
-  </p>
-<% end %>
-
-<% if @property.reviews.any? %>
-  <p>
-   <%= rating_for @property, "overall_rating", imdb_avg: true %>
-   &nbsp; 
-   <strong>Rating</strong>
-  </p> 
-<% else %>  <p>
-    <%= image_tag "mid-star.png" %>
-  <br>
-    <strong>Not Rated</strong>
-  </p>
-<% end %>
-
-<img src="http://maps.google.com/maps/api/staticmap?center=<%=@property.latitude%>,<%=@property.longitude%>&markers=icon:http://tinyurl.com/2ftvtt6|<%=@property.latitude%>,<%=@property.longitude%>&zoom=14&size=400x400&sensor=false" alt="Google Map Image" />
-
-<br>
-<br>
 <hr>
-
-
-
-  <br>
+<div class="bjpReviewsWrapper">
   <% if @property.reviews.any? %>
-    <table>
-  <thead>
-    <tr>
-      <th>Review</th>
-      <th>Review Date</th>
-      <th>Likes</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @property.reviews.each do |review| %>
-      <tr>
-        <td><%= review.review %></td>  
-        <td><%= review.created_at.strftime("%B %d, %Y") %></td>      
-        <td><%= review.score %></td>
-        <td><%= link_to 'Comments', property_review_comments_path(@property, review, @comment) %></td> 
-        <% if signed_in? %>
-          <% if current_user.id = review.user_id %>
-            <% if !review.has_time_passed? %>
-              <td><%= link_to 'Edit', edit_property_review_path(review.property, review) %></td>
-                <% if !review.comments.any? %>
-                  <td><%= link_to 'Destroy', [review.property, review], :confirm => 'Are you sure?', :method => :delete %></td>
+    
+      <% @property.reviews.each do |review| %>
+          <div class="bjpReviewBlock">
+            <div id="bjpReviewHeader">
+              <p id="bjpReviewDate"><%= review.created_at.strftime("%B %d, %Y") %></p>
+              <div id="bjpReviewStar">
+                <%= rating_for @property, "overall_rating" %>
+              </div>
+            </div>
+            <p id="bjpReviewScore">Likes: <%= review.score %></p>
+            <p id="bjpReviewBody">
+            <%= link_to review.review, property_review_comments_path(@property, review, @comment) %>
+            </p> 
+            <% if signed_in? %>
+            <% if current_user.id = review.user_id %>
+              <% if !review.has_time_passed? %>
+                <p>
+                  <%= link_to 'Edit', edit_property_review_path(review.property, review) %>
+                </p>
+                  <% if !review.comments.any? %>
+                    <p><%= link_to 'Destroy', [review.property, review], :confirm => 'Are you sure?', :method => :delete %></p>
+                  <% end %>
                 <% end %>
               <% end %>
             <% end %>
-          <% end %>
-      </tr>
+          </div>
+        <% end %>
+    <% else %>
+      <p> No Reviews to display. <%= link_to 'Add a review.', new_property_review_path(@property) %></p>
     <% end %>
-  </tbody>
-</table>
-  <% else %>
-    <p> No Reviews to display. <%= link_to 'Add a review.', new_property_review_path(@property) %></p>
-  <% end %>
-<br>
-<%= link_to 'New Review', new_property_review_path(@property, @review) %>
-<%= link_to 'Back', properties_path %>
+</div>
+  

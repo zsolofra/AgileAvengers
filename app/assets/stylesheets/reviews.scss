@@ -1,3 +1,59 @@
 // Place all the styles related to the Reviews controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.bjpReviewsWrapper {
+  position: relative;
+  clear: both;
+  overflow: scroll;
+  overflow-x: hidden;
+  height: 350px;
+  margin-bottom: 20px;
+  border-radius: 10px 0px 0px 20px;
+}
+
+.bjpReviewBlock {
+  position: relative;
+  left: 50px;
+  width: 75%;
+  height: 200px;
+  background-color: #FFE6C2;
+}
+
+#bjpReviewHeader {
+  position: relative;
+  height: 40px;
+  background-color: #8B847B;
+}
+
+#bjpReviewDate {
+  position: absolute;
+  bottom: 4px;
+  left: 10px;
+  color: white;
+  font-style: italic;
+  font-size: 20px;
+
+}
+
+#bjpReviewStar { 
+  position: absolute;
+  left: 200px;
+  bottom: 15px; 
+}
+
+#bjpReviewScore {
+  position: absolute;
+  left: 22px;
+  top: 40px;
+
+}
+
+#bjpReviewBody {
+  word-wrap: break-word;
+  height: 150px;
+  padding: 20px 20px 20px 10px;
+  margin-left: 20px;
+  margin-right: 20px;
+  background-color: #FFFEFD;
+  
+}

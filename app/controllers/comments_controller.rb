@@ -25,9 +25,10 @@ class CommentsController < ApplicationController
   end
   
   def create
+    
     @comment = @review.comments.build(comment_params)
     @comment.user = current_user
-    @comment.user_id = current_user.id
+    
     
     respond_to do |format|
       if @comment.save
@@ -61,13 +62,13 @@ class CommentsController < ApplicationController
   def upvote
     @comment = Comment.find(params[:id])
     @comment.upvote_by current_user
-    redirect_to :back
+    redirect_to property_review_comments_path(@property, @review, @comment)
   end
   
   def downvote
     @comment = Comment.find(params[:id])
     @comment.downvote_by current_user
-    redirect_to :back
+    redirect_to property_review_comments_path(@property, @review, @comment)
   end
   
   def authorize
