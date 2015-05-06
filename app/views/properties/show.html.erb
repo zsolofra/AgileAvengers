@@ -4,52 +4,58 @@
 <div class="bjpPropertyInfo">
   <div class="bjpPropertyDetails">
     
-    <h1>
+    <h1 id="bjpWordWrap">
       <%= @property.address %>
     </h1>
     
-    <h3>
+    <h3 id="bjpWordWrap">
       <%= @property.city %>,<%= @property.state %>&nbsp;<%= @property.zip %>
     </h3>
     
+    <strong>Bedrooms:</strong>
   <% if !@property.bedrooms.empty? %>
-    <p>
-      <strong>Bedrooms:</strong>
+    <p id="bjpWordWrap">
+      
       <%= @property.bedrooms %>
     </p>
   <% end %>
 
+    <strong>Bathrooms:</strong>
   <% if !@property.bathrooms.empty? %>
-    <p>
-      <strong>Bathrooms:</strong>
+    <p id="bjpWordWrap">
+      
       <%= @property.bathrooms %>
     </p>
   <% end %>
 
+    <strong>Rent:</strong>
   <% if !@property.rent.equal?(0) && !@property.rent.nil? %>
-    <p>
-      <strong>Rent:</strong>
+    <p >
+      
       <%= display_rent_for(@property) %>
     </p>
   <% end %>
 
+    <strong>Pets:</strong>
   <% if !@property.pets.empty? %>
     <p>
-      <strong>Pets:</strong>
+      
       <%= @property.pets %>
     </p>
   <% end %>
 
+    <strong>Utilities:</strong>
   <% if !@property.utilities.empty? %>
     <p>
-      <strong>Utilities:</strong>
+      
       <%= display_utilities_for(@property) %>
     </p>
   <% end %>
 
+    <h4>Property Description</h4>
   <% if !@property.description.empty? %>
     <div class="bjpPropertyDescription">
-      <h4>Property Description</h4>
+      
       <blockquote>
       <%= @property.description %>
       </blockquote>
