@@ -16,63 +16,57 @@ a:hover {
 }
 
 .bjpPropertyInfo {
-  //background-color: red;
   position: relative;
   height: 580px;
-
 }
 
 .bjpPropertyDetails {
   position: relative;
- // background-color: blue;
   width: 400px;
   height: 400px;
-  /*position: absolute;
-  left: 0px;
-  bottom: 0px;*/
   float: left;
- // margin-left: 10px;
   margin-top: 15px;
 }
 
 #bjpPropertyRating {
     position: absolute;
-    top: 200px;
-    right: 40px;
-
+    top: 10px;
+    right: -50px;
   }
 
+#bjpWordWrap {
+  word-wrap: break-word;
+}
+
 @media (max-width: 400px) {
-  
+  #bjpPropertyRating {
+    position: absolute;
+    top: 270px;
+    right: 40px;
+  }
   
   .bjpGoogleMap > img {
- 
-  border-radius: 50px;
+    border-radius: 50px;
     position: relative;
-  height: 300px;
-  width: 300px;
-  float: right;
-  top: 140px;
+    height: 300px;
+    width: 300px;
+    float: right;
+    top: 180px;
     margin-bottom: 140px;
   }
 } // end media
-
-
 
 .bjpPropertyDescription {
   position: relative;
 }
 
 .bjpPropertyDescription blockquote {
-  //padding: 10px 10px;
   word-wrap: break-word;
   overflow: scroll;
   overflow-x: hidden;
   border-radius: 5px;
   height: 200px;
   width: 350px;
-  //border: 2px solid black;
-  //background-color: yellow;
 }
 
 .bjpGoogleMap {
@@ -81,17 +75,11 @@ a:hover {
 }
 
 .bjpGoogleMap > img {
- 
   border-radius: 50px;
   height: 400px;
   width: 350px;
-  //background-color: green;
-  /*position: absolute;
-  right: 0px;
-  bottom: 0px;*/
   float: right;
   margin-top: 30px;
- // margin-right: 10px;
 }
 
 
