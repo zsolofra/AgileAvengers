@@ -36,19 +36,14 @@ a:hover {
 }
 
 #bjpPropertyRating {
-  position: absolute;
-  top: 0px;
-  right: 0px;
-
-}
-
-@media (max-width: 400px) {
-  #bjpPropertyRating {
     position: absolute;
-    top: 180px;
+    top: 200px;
     right: 40px;
 
   }
+
+@media (max-width: 400px) {
+  
   
   .bjpGoogleMap > img {
  
@@ -56,14 +51,9 @@ a:hover {
     position: relative;
   height: 300px;
   width: 300px;
-  //background-color: green;
-  /*position: absolute;
-  right: 0px;
-  bottom: 0px;*/
   float: right;
   top: 140px;
     margin-bottom: 140px;
- // margin-right: 10px;
   }
 } // end media
 
